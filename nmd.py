@@ -1,7 +1,7 @@
+from sense_hat import SenseHat
+import sys
 import time
 import random
-import sys
-from sense_hat import SenseHat
 
 sense = SenseHat()
 sense.set_rotation(90)
