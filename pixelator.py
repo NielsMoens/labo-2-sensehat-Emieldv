@@ -3,6 +3,8 @@ from random import randint
 import time
 import sys
 
+sense = SenseHat()
+
 def main():
 
     matrix1 = 0
@@ -11,7 +13,8 @@ def main():
     while matrix2 < 8 and matrix1 < 8:
         
         sense.set_pixel(matrix1, matrix2, [randint(0,255), randint(0,255), randint(0,255)])
-        time.sleep(0.5)
+        time.sleep(0.2)
+        sense.clear()
         
         if matrix2 == 7:
             matrix2 = 0
