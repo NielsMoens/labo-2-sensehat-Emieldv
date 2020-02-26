@@ -51,7 +51,7 @@ r,r,r,r,r,r,r,r,
 def main():
     while True:
         sense.set_pixels(image)
-        sleep,(0.5)
+        sleep(0.5)
         sense.set_pixels(image2)
         sleep(0.5)
         sense.set_pixels(image3)
