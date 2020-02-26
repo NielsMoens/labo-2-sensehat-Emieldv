@@ -55,5 +55,3 @@ finally:
     print("opkuisen van de matrix")
     sense.clear()
     sys.exit(0)
-    
-    
