@@ -1,20 +1,20 @@
 from sense_hat import SenseHat
 import sys
 import time
-import random
+from random import randint
 
 sense = SenseHat()
 sense.set_rotation(90)
 
 def main():
     while True:
-        sense.show_letter("N", [random.randint(1,256),random.randint(1,256),random.randint(1,256)])
+        sense.show_letter("N", [randint(0,255),randint(0,255),randint(0,255)])
         time.sleep(1)
         
-        sense.show_letter("M", [random.randint(1,256),random.randint(1,256),random.randint(1,256)])
+        sense.show_letter("M", [randint(0,255),randint(0,255),randint(0,255)])
         time.sleep(1)
         
-        sense.show_letter("D", [random.randint(1,256),random.randint(1,256),random.randint(1,256)])
+        sense.show_letter("D", [randint(0,255),randint(0,255),randint(0,255)])
         time.sleep(1)
         
         sense.clear()

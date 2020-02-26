@@ -1,12 +1,23 @@
 from sense_hat import SenseHat
-import sys
+from random import randint
 import time
-import random
-
-matrix2 = 0
+import sys
 
 def main():
-    while matrix2 < 7:
+
+    matrix1 = 0
+    matrix2 = 0
+
+    while matrix2 < 8 and matrix1 < 8:
+        
+        sense.set_pixel(matrix1, matrix2, [randint(0,255), randint(0,255), randint(0,255)])
+        time.sleep(0.5)
+        
+        if matrix2 == 7:
+            matrix2 = 0
+            matrix1 += 1
+        else:
+            matrix2 +=1
         
 try:
     main()
