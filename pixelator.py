@@ -10,13 +10,15 @@ def main():
     matrix1 = 0
     matrix2 = 0
 
-    while matrix2 < 8 and matrix1 < 8:
+    while True:
         
         sense.set_pixel(matrix1, matrix2, [randint(0,255), randint(0,255), randint(0,255)])
         time.sleep(0.2)
         sense.clear()
-        
-        if matrix2 == 7:
+        if matrix2 == 7 and matrix1 == 7:
+            matrix1 = 0
+            matrix2 = 0
+        elif matrix2 == 7:
             matrix2 = 0
             matrix1 += 1
         else:

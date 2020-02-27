@@ -33,9 +33,9 @@ e,e,e,e,e,e,e,e,
 e,e,e,e,e,e,e,e,
 ]
 
-sense.set_pixels(image)
-
 def main():
+    sense.set_pixels(image)
+    
     while True:
         sleep(1)
         sense.flip_h()
