@@ -5,6 +5,8 @@ import sys
 sense = SenseHat()
 sense.set_rotation(90)
 
+image1 = 
+
 def main():
     while True:
 
