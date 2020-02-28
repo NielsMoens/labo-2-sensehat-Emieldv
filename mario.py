@@ -5,7 +5,6 @@ import sys
 sense = SenseHat()
 sense.set_rotation(90)
 
-
 r = (255, 0, 0)
 b = (0, 0, 255)
 h = (252, 160, 72)
