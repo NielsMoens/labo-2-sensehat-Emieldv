@@ -1,53 +1,64 @@
 from sense_hat import SenseHat
 from time import sleep
-from PIL import Image
 from random import randint
 import sys
 
 sense = SenseHat()
-sense.set_rotation(90)
 
-img1 = Image.open("img/avatar1.jpg")
-img1_pixels = list(img1.getdata())
-img2 = Image.open("img/avatar2.jpg")
-img2_pixels = list(img2.getdata())
-img3 = Image.open("img/avatar3.jpg")
-img3_pixels = list(img3.getdata())
-img4 = Image.open("img/avatar4.jpg")
-img4_pixels = list(img4.getdata())
-img5 = Image.open("img/avatar5.jpg")
-img5_pixels = list(img5.getdata())
-img6 = Image.open("img/avatar6.jpg")
-img6_pixels = list(img6.getdata())
-img7 = Image.open("img/avatar7.jpg")
-img7_pixels = list(img7.getdata())
+dimention = int(input("Hoe groot moet de avatar zijn?\n8x8 -> type 8\n6x6 -> type 6\n4x4 -> type 4\n\n"))
+
+rood = int(input("\nGeef het aantal rood in (1-255)\n"))
+groen = int(input("Geef het aantal groen in (1-255)\n"))
+blauw = int(input("Geef het aantal blauw in (1-255)\n"))
+
+e = (0, 0, 0)
+c = (rood, groen, blauw)
+
+speed = float(input("\nGeef de snelheid in seconden:\n"))
+
+def color():
+    return randint(1,255)
 
 def main():
+
+    def r():
+        pixel = randint(1,2)
+
+        if pixel == 1:
+            return e
+        else:
+            return c
+
     while True:
-        sense.set_pixels(img1_pixels)
-        random = randint(1,7)
-        if random == 1:
-            sense.set_pixels(img1_pixels)
-            sleep(2)
-        elif random == 2:
-            sense.set_pixels(img2_pixels)
-            sleep(2)
-        elif random == 3:
-            sense.set_pixels(img3_pixels)
-            sleep(2)
-        elif random == 4:
-            sense.set_pixels(img4_pixels)
-            sleep(2)
-        elif random == 5:
-            sense.set_pixels(img5_pixels)
-            sleep(2)
-        elif random == 6:
-            sense.set_pixels(img6_pixels)
-            sleep(2)
-        elif random == 7:
-            sense.set_pixels(img7_pixels)
-            sleep(2)
-        
+
+        if dimention == 6:
+            imagehalf_6wide = [
+            e,e,e,e,e,e,e,e,
+            e,r(),r(),r(),r(),r(),r(),e,
+            e,r(),r(),r(),r(),r(),r(),e,
+            e,r(),r(),r(),r(),r(),r(),e,
+            ]
+            fullimage = imagehalf_6wide + imagehalf_6wide[::-1]
+        elif dimention == 4:
+            imagehalf_4wide = [
+            e,e,e,e,e,e,e,e,
+            e,e,e,e,e,e,e,e,
+            e,e,r(),r(),r(),r(),e,e,
+            e,e,r(),r(),r(),r(),e,e,
+            ]
+            fullimage = imagehalf_4wide + imagehalf_4wide[::-1]
+        else:
+            imagehalf_8wide = [
+            r(),r(),r(),r(),r(),r(),r(),r(),
+            r(),r(),r(),r(),r(),r(),r(),r(),
+            r(),r(),r(),r(),r(),r(),r(),r(),
+            r(),r(),r(),r(),r(),r(),r(),r(),
+            ]
+            fullimage = imagehalf_8wide + imagehalf_8wide[::-1]
+
+        sense.set_pixels(fullimage)
+        sleep(speed)
+        sense.clear()
 
 try:
     main()

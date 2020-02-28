@@ -6,19 +6,32 @@ import time
 sense = SenseHat()
 sense.set_rotation(90)
 
+# ask for a string and make an array 
+string = input("Geef een woord in:\n")
+string_array = [str(x) for x in str(string)]
+
+# calculate array length
+string_length = len(string_array)
+
+speed = input("Geef de snelheid in seconden in:\n")
+
+def r():
+    return randint(1,255)
+
 def main():
+
+    string_location = 0
+
     while True:
-        sense.show_letter("N", [randint(1,256),randint(1,256),randint(1,256)])
-        time.sleep(1)
         
-        sense.show_letter("M", [randint(1,256),randint(1,256),randint(1,256)])
-        time.sleep(1)
-        
-        sense.show_letter("D", [randint(1,256),randint(1,256),randint(1,256)])
-        time.sleep(1)
-        
-        sense.clear()
-        time.sleep(3)
+        if string_location < string_length:
+            sense.show_letter(string_array[string_location], [r(),r(),r()])
+            string_location += 1
+            time.sleep(float(speed))
+        else:
+            string_location = 0
+            sense.clear()
+            time.sleep(3)
     
 try:
     main()

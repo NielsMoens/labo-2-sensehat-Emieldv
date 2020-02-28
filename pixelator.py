@@ -5,6 +5,9 @@ import sys
 
 sense = SenseHat()
 
+def r():
+    return randint(1,255)
+
 def main():
 
     matrix1 = 0
@@ -12,9 +15,10 @@ def main():
 
     while True:
         
-        sense.set_pixel(matrix1, matrix2, [randint(0,255), randint(0,255), randint(0,255)])
+        sense.set_pixel(matrix1, matrix2, [r(), r(), r()])
         time.sleep(0.2)
         sense.clear()
+        
         if matrix2 == 7 and matrix1 == 7:
             matrix1 = 0
             matrix2 = 0
